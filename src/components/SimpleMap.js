@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react';
 import Marker from '../components/Marker'
-import NewMarker from '../components/NewMarker'
+
 const AnyReactComponent = ({ text }) => <div><Marker /></div>;
-// const
 
 export default class SimpleMap extends Component {
   constructor(props) {
@@ -35,11 +34,6 @@ export default class SimpleMap extends Component {
     zoom: 11
   };
 addMarker =(e) => {
-  // console.log("fdfd",e)
-  // markers.push({
-  //   lat:e.lat,
-  //   lng:e.lng
-  // })
   this.setState({
     markers: [...this.state.markers,{
       lat:e.lat,
@@ -56,41 +50,22 @@ componentDidMount() {
  }
 }
 
-selectedMarker = (e) => {
-  console.log("get marker color =>",e.target.value);
-  // this.setState({
-  //   MarkerSpinner:false
-  // })
-}
-  // _onChildClick = (key, childProps) => {
-  //   console.log("get key and value=>",key,childProps)
-  // }
-
   render() {
-    
     return (
     
         <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          
-          // onChildClick={this._onChildClick}
           onClick={(e) => this.addMarker(e)}
-          
         >
-         
           {this.state.markers.map((marker) => (
-           
            <AnyReactComponent
-           
            onClick={this.selectedMarker}
             lat={marker.lat}
             lng={marker.lng}
-            // text="My Marker"
           />
           ))}
-          
         </GoogleMapReact>
       </div>
       
